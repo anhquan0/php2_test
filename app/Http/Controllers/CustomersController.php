@@ -17,7 +17,7 @@ class CustomersController extends Controller
     {
         $search = $request->get('search');
 
-        $listCustomers = Customers::where('hoten', 'like', "%$search%") ->orwhere('email', 'like', "%$search%")->paginate(3);
+        $listCustomers = Customers::where('hoten', 'like', "%$search%") ->orwhere('email', 'like', "%$search%")-> orwhere('sdt', 'like', "%$search%") ->paginate();
         return view('customers.index', [
             'listCustomers' => $listCustomers,
             'search' => $search
@@ -48,21 +48,21 @@ class CustomersController extends Controller
                 'anhdaidien' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048|dimensions:min_width=100,min_height=100,max_width=2000,max_height=2000',
 
                 'hoten' => 'required|max:255',
-                
+
                 'sdt' => 'required',
                 'email' => 'required|unique:customers',
-                
+
             ],
             [
-                
+
                 'email.unique' => 'Email đã tồn tại!',
-                
+
                 'anhdaidien.required' => 'Ảnh đại diện không được để trống',
                 'hoten.required' => 'Họ tên không được để trống',
-                
+
                 'sdt.required' => 'SĐT không được để trống',
                 'email.required' => 'Email không được để trống',
-                
+
 
             ]
         );
@@ -73,15 +73,15 @@ class CustomersController extends Controller
         $gioitinh = $request->get('gioitinh');
         $sdt = $request->get('sdt');
         $email = $request->get('email');
-        
+
 
         $customers = new Customers();
 
         $new_image = time() . '.' . $anhdaidien->getClientOriginalExtension();
         $request->anhdaidien->move(public_path('images'), $new_image);
-        
+
         $customers->anhdaidien = $new_image;
-        
+
         $customers->hoten = $hoten;
         $customers->gioitinh = $gioitinh;
         $customers->sdt = $sdt;

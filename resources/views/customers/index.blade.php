@@ -69,7 +69,7 @@
                   <th scope="row">{{ $customers->id }}</th>
                   <td><img src="{{ asset('images/' . $customers->anhdaidien) }}" width="100px"></td>
                   <td>{{ $customers ->hoten }}</td>
-                  <td>{{ $customers ->gioitinh }}</td>
+                  <td>{{ $customers->gioitinh == 0? "Nam" : "Nữ" }}</td>
                   <td>{{ $customers ->sdt }}</td>
                   <td>{{ $customers ->email }}</td>
 
