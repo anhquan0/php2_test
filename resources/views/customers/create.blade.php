@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>thongtinkhachhang</title>
+    <title>Customer Info</title>
+    <link rel = "icon" href =
+    "https://media.geeksforgeeks.org/wp-content/cdn-uploads/gfg_200X200.png"
+          type = "image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -20,7 +23,7 @@
         <div class="col-md-8">
 
                 <div class="card-header"><h1>Thêm khách hàng</h1></div>
-                
+
 
                 @if ($errors->any())
 
@@ -38,7 +41,7 @@
 
                     </div>
 
-                @endif      
+                @endif
 
                     <form method="POST" action="{{route('customers.store')}}" enctype='multipart/form-data'>
 
@@ -101,7 +104,6 @@
 
     </div>
 
-</div>
 </body>
 </html>
 
